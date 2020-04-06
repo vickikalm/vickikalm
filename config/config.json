@@ -1,0 +1,6 @@
+{
+  "port": 5000,
+  "mongodbUrl": "mongodb://localhost:27017",
+  "db": "reviewsdb",
+  "rowLimit": 1000
+}
