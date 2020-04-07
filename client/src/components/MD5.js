@@ -215,5 +215,3 @@ function MD5 (string) {
 
     return temp.toLowerCase();
 }
-
-// bla bla
