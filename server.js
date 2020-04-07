@@ -49,3 +49,25 @@ app.get('/reviews', (req, res) => {
         //res.render('review', {reviews: result})
     });
 });
+
+app.post('/user-last-seen',(req, res, next) => {
+    let userEmail = req.body.email
+    let query = {email: userEmail};
+    var dbo = app.locals.db.db(config.db);
+    dbo.collection(config.db).find(query)
+        .sort({'email': -1})
+        .limit(1)
+        .toArray(function (error, result) {
+            if (error) {
+                console.log("error");
+                throw error;
+            }
+            var commentTime;
+            if (result.length === 1) {
+                commentTime = result[0]._id.getTimestamp();
+                res.json(commentTime);
+            }
+            else
+                res.json("No comment");
+        });
+});
