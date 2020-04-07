@@ -22,6 +22,36 @@ class ReviewsListContainer extends React.Component {
             .then(reviews => this.setState({reviews}))
     }
 
+    getUserInfo(userEmail) {
+
+        const body = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({email: userEmail})
+        };
+
+        fetch('/user-last-seen', body)
+            .then(response => response.json())
+            .then(data => alert(data))
+
+
+        //.then(data => this.setState( {popupContent: data}));
+
+
+        // fetch("/user-last-seen",
+        //     {
+        //         method: 'POST',
+        //         body: JSON.stringify(userEmail),
+        //         headers: {
+        //             //'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //             },
+        //         }).then((res) => {res.json().then(data => this.setState({popupContent: data}))})
+        //           .catch( (error) => {
+        //                 console.log('Request failed', error);
+        //             });
+    }
+
     filterReviewsBySearch(reviews, filterBy) {
         if (filterBy === '')
             return reviews;
@@ -44,7 +74,7 @@ class ReviewsListContainer extends React.Component {
         return (
             <div>
                 <Search search = {this.state.search} handleSearchChange = {this.handleSearchChange}/>
-                <Reviews reviews={this.filterByAllFilters(this.state.reviews)}/>
+                <Reviews reviews={this.filterByAllFilters(this.state.reviews)} getUserInfo = {this.getUserInfo}/>
             </div>
         )
     }

@@ -1,5 +1,6 @@
 import React from 'react';
 import './reviews.css';
+import '.././MD5'
 
 class Reviews extends React.Component {
     constructor(props) {
@@ -12,9 +13,10 @@ class Reviews extends React.Component {
             <table>
                 {this.props.reviews.map(rev =>
                     <tr key={rev.id}>
-                        <figure>
+                        <button
+                            onClick={(event) => {this.props.getUserInfo(rev.email)}}>
                             <img src={src + MD5(rev.email.toLowerCase())}/>
-                        </figure>
+                        </button>
                         <td>{rev.email}</td>
                         <td>{rev.message}</td>
                     </tr>
