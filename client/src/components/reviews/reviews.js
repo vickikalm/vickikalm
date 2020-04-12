@@ -1,11 +1,13 @@
 import React from 'react';
 import './reviews.css';
 
+//vicki commit comment 1
 class Reviews extends React.Component {
     constructor(props) {
         super(props);
         this.state = {size: 1000}
     }
+
     render() {
         let src = 'https://www.gravatar.com/avatar/';
         return (
