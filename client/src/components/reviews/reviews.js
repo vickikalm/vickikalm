@@ -9,7 +9,7 @@ class Reviews extends React.Component {
     }
 
     render() {
-        let src = 'https://www.gravatar.com/avatar/';
+        let src = 'https://www.facebook.com';
         return (
             <table>
                 {this.props.reviews.map(rev =>
